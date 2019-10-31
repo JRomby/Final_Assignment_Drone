@@ -1,13 +1,6 @@
 #include <Arduino.h>
 #include <joystick.h>
 
-/*
-*
-*   created by Ebbe Vang, October 2019
-*   Remember to reverse v and gnd because of pullup :-)
-*
-*/
-
 Joystick::Joystick(int pinBtn, int pinX, int pinY, int pinZ)
 {
     this->pinBtn = pinBtn;
@@ -30,7 +23,6 @@ void Joystick::addButtonListener(ButtonListener *btnLsn)
 
 void Joystick::loop()
 {
-    //Serial.println(digitalRead(this->pinBtn));
     // if joystick btn is pressed and not already set as pressed
     if (digitalRead(this->pinBtn) == 0 && this->buttonIsPressed == false)
     {
@@ -61,6 +53,11 @@ void Joystick::loop()
         this->y = this->y-2048;
     }
     else this->y=0;
+     if (z > 2048 + this->deadZone || z < 2048 - this->deadZone)
+    {
+        this->z = this->z-2048;
+    }
+    else this->z=0;
 
 
 }

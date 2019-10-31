@@ -92,15 +92,5 @@ void Drone::loop()
         Serial.println(joystickPosition.y);
         }
     }
-    
-    
-    /*
-    // Using joystick methods
-    Serial.print(this->joystick->getX());
-    Serial.print(" ");
-    Serial.println(this->joystick->getY());
-    */
-    
-    //sendmessage("joystickPosition")
 
 }
