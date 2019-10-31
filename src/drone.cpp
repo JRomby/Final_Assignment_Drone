@@ -90,7 +90,9 @@ void Drone::loop()
         Serial.print(joystickPosition.x);
         Serial.print(" ");
         Serial.println(joystickPosition.y);
-        this->sendCommand("")
+        Serial.print(" ");
+        Serial.println(joystickPosition.z);
+        //this->sendCommand("go"x","y","z);
         }
     }
 
