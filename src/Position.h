@@ -5,9 +5,10 @@ class Position
 {
     public: 
         Position();
-        Position(int x, int y);
+        Position(int x, int y, int z);
         int x;
-        int y;    
+        int y;
+        int z;    
 };
 
 #endif /* C9CEEF14_1ECE_4FE1_8F3E_6A3CC5F776EF */
