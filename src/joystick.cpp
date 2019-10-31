@@ -8,15 +8,17 @@
 *
 */
 
-Joystick::Joystick(int pinBtn, int pinX, int pinY)
+Joystick::Joystick(int pinBtn, int pinX, int pinY, int pinZ)
 {
     this->pinBtn = pinBtn;
     this->pinX = pinX;
     this->pinY = pinY;
+    this->pinZ = pinZ;
 
     pinMode (this->pinBtn, INPUT_PULLUP);
     pinMode (this->pinX, INPUT);
     pinMode (this->pinY, INPUT);
+    pinMode (this->pinZ, INPUT);
 }
 
 void Joystick::addButtonListener(ButtonListener *btnLsn)
@@ -47,6 +49,7 @@ void Joystick::loop()
 
     this->x = analogRead(this->pinX);
     this->y = analogRead(this->pinY);
+    this->z = analogRead(this->pinZ);
 
     if (x > 2048 + this->deadZone || x < 2048 - this->deadZone)
     {
@@ -75,4 +78,8 @@ int Joystick::getX()
 int Joystick::getY()
 {
     return this->y;
+}
+int Joystick::getZ()
+{
+    return this->z;
 }

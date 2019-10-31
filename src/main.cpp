@@ -4,10 +4,10 @@
 #include <joystick.h>
 
 String ssid = "flexlab2";
-String password = "flexiwifi";
+String password = "flexiwifi";//connecting to flexlab wifi
 
 Drone drone(ssid, password);
-Joystick joystick(15, 34, 35); // pins: btn, x, y
+Joystick joystick(15, 34, 35, 5); // pins: btn, x, y, potentiometerpin
 
 void setup()
 {
@@ -24,7 +24,7 @@ void setup()
   joystick.addButtonListener(&drone);
   
   drone.connect();
-  drone.setIp ("192.168.1.146");
+  drone.setIp ("192.168.1.110"); //Set IP så den passer til det vi skal connecte med.
 
   
 }
@@ -32,5 +32,5 @@ void setup()
 void loop()
 {
   joystick.loop();
-  drone.loop();;
+  drone.loop();
 } 
