@@ -7,6 +7,7 @@
 #include "AsyncUDP.h"
 #include <ButtonListener.h>
 #include <joystick.h>
+#include <potentiometer.h>
 
 using namespace std;
 
@@ -22,6 +23,7 @@ class Drone : public ButtonListener
         void ButtonPressed();
         void loop();
         Joystick *joystick;
+        Potentiometer *potentiometer;
     private:
         void commandResponse(String response);
         String ssid;

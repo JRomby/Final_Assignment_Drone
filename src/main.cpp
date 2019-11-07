@@ -1,19 +1,22 @@
 #include <Arduino.h>
 #include <string.h>
 #include <drone.h>
+#include <potentiometer.h>
 #include <joystick.h>
 
 String ssid = "flexlab2";
 String password = "flexiwifi";//connecting to flexlab wifi
 
 Drone drone(ssid, password);
-Joystick joystick(15, 34, 35, 5); // pins: btn, x, y, potentiometerpin
+Joystick joystick(15, 34, 35); // pins: btn, x, y
+Potentiometer potentiometer(14);
 
 void setup()
 {
   Serial.begin(9600);
 
-  drone.joystick = &joystick; 
+  drone.joystick = &joystick;
+  drone.potentiometer =&potentiometer; 
 
   for (size_t i = 0; i < 5; i++)
   {
@@ -24,7 +27,7 @@ void setup()
   joystick.addButtonListener(&drone);
   
   drone.connect();
-  drone.setIp ("192.168.1.110"); //Set IP så den passer til det vi skal connecte med.
+  drone.setIp ("192.168.1.147"); //Set IP så den passer til det vi skal connecte med.
 
   
 }
@@ -33,4 +36,5 @@ void loop()
 {
   joystick.loop();
   drone.loop();
+  potentiometer.loop();
 } 

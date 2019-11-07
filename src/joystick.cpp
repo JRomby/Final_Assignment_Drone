@@ -1,17 +1,15 @@
 #include <Arduino.h>
 #include <joystick.h>
 
-Joystick::Joystick(int pinBtn, int pinX, int pinY, int pinZ)
+Joystick::Joystick(int pinBtn, int pinX, int pinY)
 {
     this->pinBtn = pinBtn;
     this->pinX = pinX;
     this->pinY = pinY;
-    this->pinZ = pinZ;
 
     pinMode (this->pinBtn, INPUT_PULLUP);
     pinMode (this->pinX, INPUT);
     pinMode (this->pinY, INPUT);
-    pinMode (this->pinZ, INPUT);
 }
 
 void Joystick::addButtonListener(ButtonListener *btnLsn)
@@ -41,7 +39,6 @@ void Joystick::loop()
 
     this->x = analogRead(this->pinX);
     this->y = analogRead(this->pinY);
-    this->z = analogRead(this->pinZ);
 
     if (x > 2048 + this->deadZone || x < 2048 - this->deadZone)
     {
@@ -53,18 +50,13 @@ void Joystick::loop()
         this->y = this->y-2048;
     }
     else this->y=0;
-     if (z > 2048 + this->deadZone || z < 2048 - this->deadZone)
-    {
-        this->z = this->z-2048;
-    }
-    else this->z=0;
 
 
 }
 
 Position Joystick::getPosition()
 {
-    this->position = Position(this->x, this->y, this->z);
+    this->position = Position(this->x, this->y);
     return this->position;
 }
 
@@ -75,8 +67,4 @@ int Joystick::getX()
 int Joystick::getY()
 {
     return this->y;
-}
-int Joystick::getZ()
-{
-    return this->z;
 }

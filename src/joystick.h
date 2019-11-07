@@ -8,21 +8,18 @@
 class Joystick 
 {
     public:
-        Joystick(int pinBtn, int pinX, int pinY, int PinZ);
+        Joystick(int pinBtn, int pinX, int pinY);
         Position getPosition();
         void loop();
         void addButtonListener(ButtonListener *btnLsn);
         int getX();
         int getY();
-        int getZ();
     private:
-        int deadZone = 192;
+        int deadZone = 200;
         Position position;
         int pinBtn;
         int pinX;
         int pinY;
-        int pinZ;
-        int z;
         int y;
         int x;
         bool listenerIsSet = false;

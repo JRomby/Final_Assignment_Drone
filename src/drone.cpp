@@ -2,6 +2,7 @@
 #include <drone.h>
 #include <joystick.h>
 #include <Position.h>
+#include <potentiometer.h>
 
 Drone::Drone(String ssid, String password)
 {
@@ -82,6 +83,8 @@ void Drone::loop()
     // Using Position object to retrieve information
     
     Position joystickPosition = this->joystick->getPosition();
+
+    int potValue = this->potentiometer->getZ();
     
     if (joystickPosition.x != 0)
     {
@@ -89,10 +92,12 @@ void Drone::loop()
         {
         Serial.print(joystickPosition.x);
         Serial.print(" ");
-        Serial.println(joystickPosition.y);
+        Serial.print(joystickPosition.y);
         Serial.print(" ");
-        Serial.println(joystickPosition.z);
-        //this->sendCommand("go"x","y","z);
+        Serial.println(potValue);
+        /*String space = " ";
+        String cmd = "go " + joystickPosition.x+space+joystickPosition.y+space+joystickPosition.z +space+"10";
+        this->sendCommand(cmd);*/
         }
     }
 
