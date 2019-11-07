@@ -3,14 +3,13 @@
 Potentiometer::Potentiometer(int pinZ)
 {
     this->pinZ = pinZ;
-
-    pinMode(this->pinZ, INPUT);
+    pinMode(pinZ, INPUT);
 
 }
 void Potentiometer::loop() {
 
     this->z = analogRead(this->pinZ);
-
+    Serial.println(this->z);
 }
 int Potentiometer::getZ()
 {

@@ -90,11 +90,11 @@ void Drone::loop()
     {
         if (joystickPosition.y != 0)
         {
-        Serial.print(joystickPosition.x);
+        /*Serial.print(joystickPosition.x);
         Serial.print(" ");
         Serial.print(joystickPosition.y);
         Serial.print(" ");
-        Serial.println(potValue);
+        Serial.println(potValue);*/
         /*String space = " ";
         String cmd = "go " + joystickPosition.x+space+joystickPosition.y+space+joystickPosition.z +space+"10";
         this->sendCommand(cmd);*/

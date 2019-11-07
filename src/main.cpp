@@ -9,14 +9,14 @@ String password = "flexiwifi";//connecting to flexlab wifi
 
 Drone drone(ssid, password);
 Joystick joystick(15, 34, 35); // pins: btn, x, y
-Potentiometer potentiometer(14);
+Potentiometer pot(13);
 
 void setup()
 {
   Serial.begin(9600);
 
   drone.joystick = &joystick;
-  drone.potentiometer =&potentiometer; 
+  drone.potentiometer =&pot; 
 
   for (size_t i = 0; i < 5; i++)
   {
@@ -36,5 +36,5 @@ void loop()
 {
   joystick.loop();
   drone.loop();
-  potentiometer.loop();
+  pot.loop();
 } 
