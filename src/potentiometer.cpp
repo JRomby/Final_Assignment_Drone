@@ -9,7 +9,10 @@ Potentiometer::Potentiometer(int pinZ)
 void Potentiometer::loop() {
 
     this->z = analogRead(this->pinZ);
+    if (this->changed)
+    {
     Serial.println(this->z);
+    }
 }
 int Potentiometer::getZ()
 {
