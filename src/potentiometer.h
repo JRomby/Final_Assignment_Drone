@@ -14,6 +14,7 @@ class Potentiometer
         int pinZ;
         int z;
         bool changed = false;
+        int deadZone = 5;
 };
 
 #endif /* A812D987_C035_417F_B3E8_E665B02237A8 */

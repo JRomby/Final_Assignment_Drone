@@ -84,7 +84,10 @@ void Drone::loop()
     
     Position joystickPosition = this->joystick->getPosition();
 
-    int potValue = this->potentiometer->getZ();
+    int potvalue = this->potentiometer->getZ();//set potvalue = z
+    int height;
+    height = map(potvalue, 0, 4095, 0, 500);//map the potvalue to be within 0-500
+    Serial.println(height);
     
     if (joystickPosition.x != 0)
     {
