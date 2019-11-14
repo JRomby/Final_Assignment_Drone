@@ -14,6 +14,8 @@ class Joystick
         void addButtonListener(ButtonListener *btnLsn);
         int getX();
         int getY();
+        bool jChanged = false;
+        bool jChanged();
     private:
         int deadZone = 100;
         Position position;
@@ -22,6 +24,8 @@ class Joystick
         int pinY;
         int y;
         int x;
+        int conX;
+        int conY;
         bool listenerIsSet = false;
         ButtonListener *buttonListener;
         bool buttonIsPressed = false;

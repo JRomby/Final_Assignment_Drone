@@ -39,18 +39,19 @@ void Joystick::loop()
 
     this->x = analogRead(this->pinX);
     this->y = analogRead(this->pinY);
+    jChanged = false;
 
-    if (x > 2048 + this->deadZone || x < 2048 - this->deadZone)
+     if (this->x > conX + deadZone)
     {
-        this->x = this->x-2048;
+        conX = this->x;
+        jChanged = true;
     }
-    else this->x=0;
-    if (y > 2048 + this->deadZone || y < 2048 - this->deadZone)
+    
+    if(this->y < conY - deadZone)
     {
-        this->y = this->y-2048;
+        conY = this->y;
+        jChanged = true;
     }
-    else this->y=0;
-
 
 }
 
@@ -67,4 +68,7 @@ int Joystick::getX()
 int Joystick::getY()
 {
     return this->y;
+}
+bool getjChanged(){
+    return this->jChanged;
 }

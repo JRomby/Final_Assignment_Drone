@@ -10,18 +10,18 @@ Potentiometer::Potentiometer(int pinZ)
 void Potentiometer::loop() {
 
     this->z = analogRead(this->pinZ);
-    changed = false;
+    pChanged = false;
 
      if (this->z > c + deadZone)
     {
         c = this->z;
-        changed = true;
+        pChanged = true;
     }
     
     if(this->z < c - deadZone)
     {
         c = this->z;
-        changed = true;
+        pChanged = true;
     }
     
 }
@@ -29,6 +29,6 @@ int Potentiometer::getZ()
 {
     return this->c;
 }
-bool Potentiometer::getChanged(){
-    return this->changed;
+bool Potentiometer::getpChanged(){
+    return this->pChanged;
 }

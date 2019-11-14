@@ -84,7 +84,7 @@ void Drone::loop()
     potValue = this->potentiometer->getZ();//set potvalue = z
 
 
-   if(potentiometer->getChanged() == true)
+   if(potentiometer->getpChanged() == true)
    {
        height = map(potValue, 0, 4095, 20, 500);//map the potvalue to be within 0-500
        
