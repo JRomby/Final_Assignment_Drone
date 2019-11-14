@@ -91,20 +91,15 @@ void Drone::loop()
    }
    
 
-    if (joystickPosition.x != 0)
-    {
-        if (joystickPosition.y != 0)
+    if(joystick->getjChanged() == true)
         {
         xVal = map(joystickPosition.x,-2048,2048,-500,500);
         yVal = map(joystickPosition.y,-2048,2048,-500,500);
+        }
 
- String goXYZ = "go ";
+    String goXYZ = "go ";
     String sp = " ";
     goXYZ.concat(xVal +sp+ yVal +sp+ height +sp+ 10);
     Serial.println(goXYZ);
-        }
-    }
-   
-    //this->sendCommand();
-
+     //this->sendCommand();
 }

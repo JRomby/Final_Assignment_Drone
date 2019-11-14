@@ -41,13 +41,13 @@ void Joystick::loop()
     this->y = analogRead(this->pinY);
     jChanged = false;
 
-     if (this->x > conX + deadZone)
+     if (this->x > conX + deadZone || this->x < conX - deadZone)
     {
         conX = this->x;
         jChanged = true;
     }
     
-    if(this->y < conY - deadZone)
+    if(this->y > conY + deadZone || this->y < conY - deadZone)
     {
         conY = this->y;
         jChanged = true;
@@ -69,6 +69,7 @@ int Joystick::getY()
 {
     return this->y;
 }
-bool getjChanged(){
+bool Joystick::getjChanged()
+{
     return this->jChanged;
 }

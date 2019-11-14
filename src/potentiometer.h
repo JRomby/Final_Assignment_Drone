@@ -9,7 +9,7 @@ class Potentiometer
         Potentiometer(int pinZ);
         void loop();
         int getZ();
-        bool getChanged();
+        bool getpChanged();
         bool pChanged = false;
         
     private:

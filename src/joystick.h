@@ -14,8 +14,8 @@ class Joystick
         void addButtonListener(ButtonListener *btnLsn);
         int getX();
         int getY();
+        bool getjChanged();
         bool jChanged = false;
-        bool jChanged();
     private:
         int deadZone = 100;
         Position position;
