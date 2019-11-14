@@ -12,7 +12,7 @@ void Potentiometer::loop() {
 
      if (z > this->z + this->deadZone || z < this->z - this->deadZone)
     {
-        this->z = z
+        this->z = z;
         changed = true;
     }
     else z = z;
