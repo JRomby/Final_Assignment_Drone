@@ -33,6 +33,10 @@ class Drone : public ButtonListener
         const int udpPort = 8889; 
         String droneIp = "192.168.1.146";
         bool flying = false;
+        int potValue;
+        int height;
+        int xVal;
+        int yVal;
 };
 
 #endif /* C8C7268F_7308_4565_BA1F_FDBA5EBBD88F */

@@ -21,7 +21,7 @@ void setup()
   joystick.addButtonListener(&drone);
   
   drone.connect();
-  drone.setIp ("192.168.1.147"); //Set IP så den passer til det vi skal connecte med.
+  drone.setIp ("192.168.1.108"); //Set IP så den passer til det vi skal connecte med.
 
   
 }

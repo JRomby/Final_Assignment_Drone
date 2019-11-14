@@ -9,11 +9,13 @@ class Potentiometer
         Potentiometer(int pinZ);
         void loop();
         int getZ();
+        bool getChanged();
+        bool changed = false;
         
     private:
         int pinZ;
         int z;
-        int deadZone = 50;
+        int deadZone = 80;
         int c;
 };
 

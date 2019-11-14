@@ -15,7 +15,7 @@ class Joystick
         int getX();
         int getY();
     private:
-        int deadZone = 200;
+        int deadZone = 100;
         Position position;
         int pinBtn;
         int pinX;

@@ -7,7 +7,7 @@
 Drone::Drone(String ssid, String password)
 {
     this->ssid = ssid;
-    this->password = password; 
+    this->password = password;
 }
 
 void Drone::connect()
@@ -78,30 +78,33 @@ void Drone::ButtonPressed()
 }
 
 void Drone::loop()
-{
-    
-    // Using Position object to retrieve information
-    
+{   
     Position joystickPosition = this->joystick->getPosition();
 
-    int potvalue = this->potentiometer->getZ();//set potvalue = z
-    int height;
-    height = map(potvalue, 0, 4095, -500, 500);//map the potvalue to be within 0-500
-    Serial.println(height);
-    
+    potValue = this->potentiometer->getZ();//set potvalue = z
+
+
+   if(potentiometer->getChanged() == true)
+   {
+       height = map(potValue, 0, 4095, 20, 500);//map the potvalue to be within 0-500
+       
+   }
+   
+
     if (joystickPosition.x != 0)
     {
         if (joystickPosition.y != 0)
         {
-        /*Serial.print(joystickPosition.x);
-        Serial.print(" ");
-        Serial.print(joystickPosition.y);
-        Serial.print(" ");
-        Serial.println(potValue);*/
-        /*String space = " ";
-        String cmd = "go " + joystickPosition.x+space+joystickPosition.y+space+joystickPosition.z +space+"10";
-        this->sendCommand(cmd);*/
+        xVal = map(joystickPosition.x,-2048,2048,-500,500);
+        yVal = map(joystickPosition.y,-2048,2048,-500,500);
+
+ String goXYZ = "go ";
+    String sp = " ";
+    goXYZ.concat(xVal +sp+ yVal +sp+ height +sp+ 10);
+    Serial.println(goXYZ);
         }
     }
+   
+    //this->sendCommand();
 
 }

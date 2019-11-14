@@ -10,19 +10,25 @@ Potentiometer::Potentiometer(int pinZ)
 void Potentiometer::loop() {
 
     this->z = analogRead(this->pinZ);
+    changed = false;
 
      if (this->z > c + deadZone)
     {
         c = this->z;
-        Serial.println("+");
+        changed = true;
     }
+    
     if(this->z < c - deadZone)
     {
         c = this->z;
-        Serial.println("-");
+        changed = true;
     }
+    
 }
 int Potentiometer::getZ()
 {
     return this->c;
+}
+bool Potentiometer::getChanged(){
+    return this->changed;
 }
