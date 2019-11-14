@@ -18,12 +18,6 @@ void setup()
   drone.joystick = &joystick;
   drone.potentiometer =&pot; 
 
-  for (size_t i = 0; i < 5; i++)
-  {
-    Serial.println(i);
-    delay(1000);
-  }
-
   joystick.addButtonListener(&drone);
   
   drone.connect();

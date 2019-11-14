@@ -4,20 +4,25 @@ Potentiometer::Potentiometer(int pinZ)
 {
     this->pinZ = pinZ;
     pinMode(pinZ, INPUT);
+    c = this->z;
 
 }
 void Potentiometer::loop() {
 
     this->z = analogRead(this->pinZ);
 
-     if (z > this->z + this->deadZone || z < this->z - this->deadZone)
+     if (this->z > c + deadZone)
     {
-        this->z = z;
-        changed = true;
+        c = this->z;
+        Serial.println("+");
     }
-    else z = z;
+    if(this->z < c - deadZone)
+    {
+        c = this->z;
+        Serial.println("-");
+    }
 }
 int Potentiometer::getZ()
 {
-    return this->z;
+    return this->c;
 }
