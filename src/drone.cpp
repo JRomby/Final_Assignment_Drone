@@ -100,5 +100,8 @@ void Drone::loop()
     String sp = " ";
     goXYZ.concat(xVal +sp+ yVal +sp+ height +sp+ 10);//go x y z speed
     Serial.println(goXYZ);
-     //this->sendCommand();
+    if(flying == true)
+    {
+    this->sendCommand(goXYZ);
+    }
 }
