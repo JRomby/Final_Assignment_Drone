@@ -2,14 +2,12 @@
 #define A812D987_C035_417F_B3E8_E665B02237A4
 
 #include <Arduino.h>
-#include <Position.h>
 #include <ButtonListener.h>
 
 class Joystick 
 {
     public:
         Joystick(int pinBtn, int pinX, int pinY);
-        Position getPosition();
         void loop();
         void addButtonListener(ButtonListener *btnLsn);
         int getX();
@@ -18,7 +16,6 @@ class Joystick
         bool jChanged = false;
     private:
         int deadZone = 100;
-        Position position;
         int pinBtn;
         int pinX;
         int pinY;

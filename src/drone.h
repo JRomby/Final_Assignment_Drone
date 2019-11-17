@@ -35,6 +35,8 @@ class Drone : public ButtonListener
         bool flying = false;
         int potValue;
         int height;
+        int posX;
+        int posY;
         int xVal;
         int yVal;
 };

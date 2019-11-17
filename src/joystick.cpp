@@ -55,12 +55,6 @@ void Joystick::loop()
 
 }
 
-Position Joystick::getPosition()
-{
-    this->position = Position(this->x, this->y);
-    return this->position;
-}
-
 int Joystick::getX()
 {
     return this->x;

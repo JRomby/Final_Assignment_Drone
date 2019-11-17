@@ -4,8 +4,8 @@
 #include <potentiometer.h>
 #include <joystick.h>
 
-String ssid = "flexlab2";
-String password = "flexiwifi";//connecting to flexlab wifi
+String ssid = "CableBox-B078";
+String password = "gjz2ymm0kd";//connecting to wifi
 
 Drone drone(ssid, password);
 Joystick joystick(15, 34, 35); // pins: btn, x, y

@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <drone.h>
 #include <joystick.h>
-#include <Position.h>
 #include <potentiometer.h>
 
 Drone::Drone(String ssid, String password)
@@ -79,8 +78,8 @@ void Drone::ButtonPressed()
 
 void Drone::loop()
 {   
-    Position joystickPosition = this->joystick->getPosition();
-
+    posX = this->joystick->getX();
+    posY = this->joystick->getY();
     potValue = this->potentiometer->getZ();//set potvalue = z
 
 
@@ -93,13 +92,13 @@ void Drone::loop()
 
     if(joystick->getjChanged() == true)
         {
-        xVal = map(joystickPosition.x,-2048,2048,-500,500);
-        yVal = map(joystickPosition.y,-2048,2048,-500,500);
+        xVal = map(posX, 0, 4100, -500, 500);
+        yVal = map(posY, 0, 4100, -500, 500);
         }
 
     String goXYZ = "go ";
     String sp = " ";
-    goXYZ.concat(xVal +sp+ yVal +sp+ height +sp+ 10);
+    goXYZ.concat(xVal +sp+ yVal +sp+ height +sp+ 10);//go x y z speed
     Serial.println(goXYZ);
      //this->sendCommand();
 }
